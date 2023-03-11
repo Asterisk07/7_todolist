@@ -1,0 +1,68 @@
+body{
+    margin:10vh 10vw;
+    /* background-color: red; */
+    
+}
+.invis {
+    color: red;
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; */
+    /* opacity: 0; */
+    z-index: 1;
+  }
+.hea{
+    size:48px;
+}
+
+/* table td,th{
+    /* text-align: center; */
+/* } */ */
+/* table td,button {
+    
+    /* border: 2px solid black; */
+    /* font-size:2vw;  */
+  /* } */ */
+  table th{
+    
+    /* font-size:3vw; */
+    /* border : 4px solid red; */
+    background-color: yellow;
+  }
+  
+  .cen{
+    text-align: center;
+  }
+  h1{
+    font-size: 5vw;
+  }
+ 
+  h2{
+    font-size:4vw;
+  }
+  
+  a{
+    color: blue;
+}
+table,h2{
+    margin: 5vh auto;
+}
+
+table{
+    width: 100%;
+}
+td:nth-child(1){
+    text-align: center;
+     
+    width: 15%;
+  }
+    td:nth-child(2) {
+        text-align: center;
+    width: 10%;
+  }
+
+  td:nth-child(3) {
+    width: 75%;
+  }
