@@ -1,5 +1,5 @@
 <h1> todolist </h1>
-A todolist app built using express and SQL
+A todolist app built using express ,Pug, SQL and Bootstrap.
 
 <h2>  Why Express ? </h2> 
 I wanted to try out and explore express .
