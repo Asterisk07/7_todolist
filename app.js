@@ -22,38 +22,62 @@ app.use('/public/css', express.static('public/css'))
 app.use('/public/js', express.static('public/js'));
 
 let db=new sqlite3.Database("todolist.db");
-app.get("/",(req,res)=>{
+
+// function unique(user){
+//   q="select * from users where user=(?)"
+  
+//   db.all(q,[user],(err,rows)=>{
+//     if (err) {
+          
+//       console.log("error during login");
+//     }
+//   })
+// }
+app.get("/view",(req,res)=>{
     // res.render('add',);
-    const q="select * from todo order by id";
+    // const q="select id,name,priority,time,date from todo ";
+    const q="select id,name,priority,time,strftime('%d-%m-%Y', date) as date  from todo order by priority asc ,date asc,time asc";
+    // const q="select id,name,priority,strftime('%H:%M:%S %p',time) as time,strftime('%d-%m-%Y', date) as date  from todo order by priority asc ,date asc,time asc";
+    // const q="select * from todo ";
       db.all(q, [], (err, rows) => {
         if (err) {
           
-          console.log("error");
+          console.log("error during view");
         }
         // console.log(rows);
         // res.render('add',{rows});
-        res.render('add2',{rows});
+        res.render('add',{rows});
       });
     
 });
 
-
+app.get("/",(req,res)=>{
+  res.redirect('/view');
+  // res.render("home");
+})
 db.serialize(() => {
     db.run('CREATE TABLE IF NOT EXISTS todo (id INTEGER PRIMARY KEY, name TEXT)');
   });
 
-app.post('/', (req, res) => {
+app.post('/add', (req, res) => {
     // console.log(req);
     // const bod=req.body;
     // console.log(bod);
     const name = req.body.name;
-    console.log("eere");
-    console.log('Received name:', name);
+    const date = req.body.date;
+    const time = req.body.time;
+    const priority = req.body.priority;
+    
+    // console.log(priority); 
+    console.log(time); 
+    console.log(date); 
+    // console.log('Received name:', name); 
+
     db.run(
-      'INSERT INTO todo (name) VALUES (?)',
-      [name]
+      'INSERT INTO todo (name,date,time,priority) VALUES (?,?,?,?)',
+      [name,date,time,priority]
     );
-    res.redirect('/');
+    res.redirect('/view');
     // res.send('Data received');
   });
 
@@ -63,12 +87,12 @@ app.post('/del', (req, res) => {
     // console.log(bod);
     const idd = req.body.num;
     // console.log("eere");
-    console.log('Received id for deletion:', idd);
+    // console.log('Received id for deletion:', idd); TK
     db.run(
       'delete from todo where id=(?)',[idd]);
 
     
-    res.redirect('/');
+    res.redirect('/view');
     // res.send('Data received');
   });
 
