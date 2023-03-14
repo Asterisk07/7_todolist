@@ -5,9 +5,9 @@ html
 		link(href="../public/css/style.css", rel="stylesheet")
 		title  Add
 	body.yellow
-		nav.navbar.navbar-expand-lg.bg-body-tertiary
-			.container-fluid
-				a.navbar-brand(href="#") Todolist
+		nav.navbar.navbar-expand-lg.bg-body-tertiary.redd
+			.container-fluid.redd
+				span#todo.navbar-brand todolist
 				button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
 					span.navbar-toggler-icon
 				#navbarSupportedContent.collapse.navbar-collapse
@@ -31,7 +31,7 @@ html
 						input.form-control.me-2(type="search", placeholder="Search", aria-label="Search")
 						button.btn.btn-outline-success(type="submit") Search
 		form#form1(action="/add", method="post")
-			.mb-3
+			.mb-3.topdiv
 				label.form-label(for="name") Task name
 				input#name.form-control(type="text", aria-describedby="emailHelp", name="name", required, maxlength="30", placeholder="Type task title here")
 				#emailHelp.form-text Name can be a upto a maximum of 30 characters only.
@@ -49,8 +49,8 @@ html
 					option(value="Medium") Medium 
 					option(value="Low") Low 
 				
-			button.btn.btn-primary(type="submit") Add
-		table 
+			button.btn.btn-primary(type="submit") Add 
+		table.tab1
 			thead
 				tr 
 					th 
@@ -60,10 +60,10 @@ html
 					th Deadline
 					th Due date 
 					
-			tbody 
+			tbody.tbod1
 				each e in rows 
-					tr(id=e['id'])
-						td 
+					tr(id=e['id']).trow
+						td.tdd
 							 
 							//- input(type='checkbox')
 							//- implement invisible button later
